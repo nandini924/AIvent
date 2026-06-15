@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ConvexClientProvider } from "./ConvexClientProvider";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+import { Toaster } from "sonner";
 export const metadata = {
   title: "AIvent",
   description: "Discover and create amazing events",
@@ -42,16 +43,17 @@ export default function RootLayout({ children }) {
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-orange-600/20 rounded-full blur-3xl"/>
          </div>
           <div className="relative z-10 min-h-[90vh]">{children}</div>
-          </main>
+          
          
         {/*Footer*/}
         <footer className="border-t border-gray-800/50 py-8 px-6 max-w-7xl mx-auto">
         <div className="text-sm text-gray-400">
-          made with love</div></footer>
-                   </ConvexClientProvider>
+          made with love</div>
+          </footer>
+          </main>
+          <Toaster position="top-center" richColors />
+          </ConvexClientProvider>
           </ClerkProvider>
-
-         
          </ThemeProvider>
       </body>
     </html>
