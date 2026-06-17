@@ -57,9 +57,9 @@ export default function Header() {
           </Link>
 
           {/* Search & Location - Desktop Only */}
-          {/* <div className="hidden md:flex flex-1 justify-center">
+          <div className="hidden md:flex flex-1 justify-center">
             <SearchLocationBar />
-          </div> */}
+          </div>
 
           {/* Right Side Actions */}
           <div className="flex items-center">
@@ -121,9 +121,9 @@ export default function Header() {
         </div>
 
         {/* Mobile Search & Location - Below Header */}
-        {/* <div className="md:hidden border-t px-3 py-3">
+        <div className="md:hidden border-t px-3 py-3">
           <SearchLocationBar />
-        </div> */}
+        </div>
 
         {isLoading && (
           <div className="absolute bottom-0 left-0 w-full">
