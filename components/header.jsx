@@ -8,8 +8,8 @@ import { Authenticated, Unauthenticated } from "convex/react";
 import { BarLoader } from "react-spinners";
 import { useStoreUser } from "@/hooks/use-store-user";
 
-// import { useOnboarding } from "@/hooks/use-onboarding";
-// import OnboardingModal from "./onboarding-modal";
+import { useOnboarding } from "@/hooks/use-onboarding";
+import OnboardingModal from "./onboarding-modal";
 
 // import SearchLocationBar from "./search-location-bar";
 import { Button } from "@/components/ui/button";
@@ -23,8 +23,8 @@ export default function Header() {
 
   const { isLoading } = useStoreUser();
 
-  // const { showOnboarding, handleOnboardingComplete, handleOnboardingSkip } =
-  //   useOnboarding();
+  const { showOnboarding, handleOnboardingComplete, handleOnboardingSkip } =
+    useOnboarding();
 
   // const { has } = useAuth();
   // const hasPro = has?.({ plan: "pro" });
@@ -133,11 +133,11 @@ export default function Header() {
       </nav>
 
       {/* Onboarding Modal */}
-      {/* <OnboardingModal
-        isOpen={showOnboarding}
-        onClose={handleOnboardingSkip}
-        onComplete={handleOnboardingComplete}
-      /> */}
+      <OnboardingModal
+     isOpen={showOnboarding}
+       onClose={handleOnboardingSkip}
+      onCmplete={handleOnboardingComplete}
+       />
 
       {/* <UpgradeModal
         isOpen={showUpgradeModal}
