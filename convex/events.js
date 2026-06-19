@@ -25,10 +25,11 @@ export const createEvent = mutation({
     themeColor: v.optional(v.string()),
     hasPro: v.optional(v.boolean()),
   },
+
   handler: async (ctx, args) => {
     try {
       const user = await ctx.runQuery(internal.users.getCurrentUser);
-
+     const hasPro = args.hasPro ?? false;
       // SERVER-SIDE CHECK: Verify event limit for Free users
       if (!hasPro && user.freeEventsCreated >= 1) {
         throw new Error(
@@ -54,8 +55,9 @@ export const createEvent = mutation({
         .replace(/(^-|-$)/g, "");
 
       // Create event
+      const { hasPro: _hasPro, ...eventData } = args;
       const eventId = await ctx.db.insert("events", {
-        ...args,
+         ...eventData,
         themeColor, // Use validated color
         slug: `${slug}-${Date.now()}`,
         organizerId: user._id,

@@ -3,19 +3,19 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Building, Crown, Plus, Ticket } from "lucide-react";
-import { SignInButton, UserButton } from "@clerk/nextjs";
+import { SignInButton, UserButton,useAuth } from "@clerk/nextjs";
 import { Authenticated, Unauthenticated } from "convex/react";
 import { BarLoader } from "react-spinners";
 import { useStoreUser } from "@/hooks/use-store-user";
 
 import { useOnboarding } from "@/hooks/use-onboarding";
 import OnboardingModal from "./onboarding-modal";
+import SearchLocationBar from "./search-location-bar";
 
-// import SearchLocationBar from "./search-location-bar";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
-// import UpgradeModal from "./upgrade-modal";
+ import UpgradeModal from "./upgrade-modal";
 import { Badge } from "./ui/badge";
 
 export default function Header() {
@@ -26,8 +26,8 @@ export default function Header() {
   const { showOnboarding, handleOnboardingComplete, handleOnboardingSkip } =
     useOnboarding();
 
-  // const { has } = useAuth();
-  // const hasPro = has?.({ plan: "pro" });
+  const { has } = useAuth();
+  const hasPro = has?.({ plan: "pro" });
 
   return (
     <>
@@ -48,12 +48,12 @@ export default function Header() {
               spott*
             </span> */}
 
-            {/* {hasPro && (
+            {hasPro && (
               <Badge className="bg-linear-to-r from-pink-500 to-orange-500 gap-1 text-white ml-3">
                 <Crown className="w-3 h-3" />
                 Pro
               </Badge>
-            )} */}
+            )}
           </Link>
 
           {/* Search & Location - Desktop Only */}
@@ -64,7 +64,7 @@ export default function Header() {
           {/* Right Side Actions */}
           <div className="flex items-center">
             {/* Show Pro badge or Upgrade button */}
-            {/* {!hasPro && (
+              {!hasPro && (
               <Button
                 variant="ghost"
                 size="sm"
@@ -72,11 +72,11 @@ export default function Header() {
               >
                 Pricing
               </Button>
-            )}
+            )} 
 
             <Button variant="ghost" size="sm" asChild className="mr-2">
               <Link href="/explore">Explore</Link>
-            </Button> */}
+            </Button> 
 
             <Authenticated>
               {/* Create Event Button */}
@@ -139,11 +139,11 @@ export default function Header() {
       onCmplete={handleOnboardingComplete}
        />
 
-      {/* <UpgradeModal
+       <UpgradeModal
         isOpen={showUpgradeModal}
         onClose={() => setShowUpgradeModal(false)}
         trigger="header"
-      /> */}
+      /> 
     </>
   );
 }
