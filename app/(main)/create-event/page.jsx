@@ -34,7 +34,7 @@ import {
 } from "@/components/ui/select";
 
 import UnsplashImagePicker from "@/components/unsplash-image-picker";
-// import AIEventCreator from "./_components/ai-event-creator";
+import AIEventCreator from "./_components/ai-event-creator";
 import UpgradeModal from "@/components/upgrade-modal";
 import { CATEGORIES } from "@/lib/data";
 import Image from "next/image";
@@ -219,7 +219,7 @@ export default function CreateEventPage() {
             </p>
           )}
         </div>
-        {/* <AIEventCreator onEventGenerated={handleAIGenerate} /> */}
+        <AIEventCreator onEventGenerated={handleAIGenerate} />
       </div>
 
       <div className="max-w-6xl mx-auto grid md:grid-cols-[320px_1fr] gap-10">
