@@ -321,38 +321,30 @@ export default function CreateEventPage() {
             <div className="space-y-2">
               <Label className="text-sm">Start</Label>
               <div className="grid grid-cols-[1fr_auto] gap-2">
-                {/* <Popover>
-                  <PopoverTrigger asChild>
+                <Popover>
+                  {/* <PopoverTrigger asChild>   
                     <Button
                       variant="outline"
                       className="w-full justify-between"
-                    >
+                 >
                       {startDate ? format(startDate, "PPP") : "Pick date"}
                       <CalendarIcon className="w-4 h-4 opacity-60" />
                     </Button>
                   </PopoverTrigger> */}
-                  {/* <PopoverContent className="p-0">
+                 <PopoverTrigger className="w-full">
+  <div className="inline-flex w-full items-center justify-between rounded-md border px-3 py-2">
+    {startDate ? format(startDate, "PPP") : "Pick date"}
+    <CalendarIcon className="w-4 h-4 opacity-60" />
+  </div>
+</PopoverTrigger>
+                  <PopoverContent className="p-0">
                     <Calendar
                       mode="single"
                       selected={startDate}
                       onSelect={(date) => setValue("startDate", date)}
                     />
                   </PopoverContent>
-                </Popover> */}
-                <Popover>
-  <PopoverTrigger className="w-full inline-flex items-center justify-between rounded-md border px-3 py-2 text-sm">
-    {startDate ? format(startDate, "PPP") : "Pick date"}
-    <CalendarIcon className="w-4 h-4 opacity-60" />
-  </PopoverTrigger>
-
-  <PopoverContent className="p-0">
-    <Calendar
-      mode="single"
-      selected={startDate}
-      onSelect={(date) => setValue("startDate", date)}
-    />
-  </PopoverContent>
-</Popover>
+                </Popover>
                 <Input
                   type="time"
                   {...register("startTime")}
@@ -370,8 +362,8 @@ export default function CreateEventPage() {
             <div className="space-y-2">
               <Label className="text-sm">End</Label>
               <div className="grid grid-cols-[1fr_auto] gap-2">
-                {/* <Popover>
-                  <PopoverTrigger asChild>
+                <Popover>
+                  {/* <PopoverTrigger asChild>
                     <Button
                       variant="outline"
                       className="w-full justify-between"
@@ -379,7 +371,13 @@ export default function CreateEventPage() {
                       {endDate ? format(endDate, "PPP") : "Pick date"}
                       <CalendarIcon className="w-4 h-4 opacity-60" />
                     </Button>
-                  </PopoverTrigger>
+                  </PopoverTrigger> */}
+                  <PopoverTrigger
+  className="inline-flex w-full items-center justify-between rounded-md border px-3 py-2 text-sm"
+>
+  {endDate ? format(endDate, "PPP") : "Pick date"}
+  <CalendarIcon className="w-4 h-4 opacity-60" />
+</PopoverTrigger>
                   <PopoverContent className="p-0">
                     <Calendar
                       mode="single"
@@ -388,22 +386,7 @@ export default function CreateEventPage() {
                       disabled={(date) => date < (startDate || new Date())}
                     />
                   </PopoverContent>
-                </Popover> */}
-                <Popover>
-  <PopoverTrigger className="w-full inline-flex items-center justify-between rounded-md border px-3 py-2 text-sm">
-    {endDate ? format(endDate, "PPP") : "Pick date"}
-    <CalendarIcon className="w-4 h-4 opacity-60" />
-  </PopoverTrigger>
-
-  <PopoverContent className="p-0">
-    <Calendar
-      mode="single"
-      selected={endDate}
-      onSelect={(date) => setValue("endDate", date)}
-      disabled={(date) => date < (startDate || new Date())}
-    />
-  </PopoverContent>
-</Popover>
+                </Popover>
                 <Input
                   type="time"
                   {...register("endTime")}
